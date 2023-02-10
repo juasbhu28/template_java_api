@@ -1,0 +1,21 @@
+name: Deployments
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy_staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Deploy to staging using hook
+        run: curl https://api.render.com/deploy/${{ secrets.RENDER_SERVER_ID }}?key=${{ secrets.RENDER_SERVER_KEY }}
+
+  deploy_prod:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Deploy to production using hook
+        run: curl https://api.render.com/deploy/${{ secrets.RENDER_SERVER_ID }}?key=${{ secrets.RENDER_SERVER_KEY }}
+

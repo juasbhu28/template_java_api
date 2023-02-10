@@ -1,0 +1,46 @@
+# Note: Build stage was dropped by the moment because render does not need a built app to deploy it
+stages:
+  - test
+  - deploy
+
+test:
+  image: amazoncorretto:19.0.1
+  stage: test
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - .gradle/
+      - build/
+  variables:
+    GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  script:
+    - ./gradlew check
+  only:
+    - main
+    - merge_requests
+
+
+deploy_staging:
+  image: alpine:latest
+  stage: deploy
+  script:
+    - echo "Deploying to staging server using Render Hook"
+    - apk --no-cache add curl
+    - curl https://api.render.com/deploy/$RENDER_SERVER_ID?key=$RENDER_SERVER_KEY
+  environment:
+    name: staging
+  only:
+    - main
+
+deploy_prod:
+  image: alpine:latest
+  stage: deploy
+  script:
+    - echo "Deploying to production server using Render Hook"
+    - apk --no-cache add curl
+    - curl https://api.render.com/deploy/$RENDER_SERVER_ID?key=$RENDER_SERVER_KEY
+  environment:
+    name: production
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: manual

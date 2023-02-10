@@ -1,0 +1,39 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      format-sql: true
+      use-new-id-generator-mappings: false
+      hbm2ddl:
+        auto: create
+        create_namespaces: true
+    show-sql: true
+    database: POSTGRESQL
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/mini_market_dev
+    username: root
+    password: secret
+    driverClassName: org.postgresql.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+app:
+  security:
+    ignored: /actuator/health/**, /h2/**, /swagger-resources/**, /swagger-ui.html, /v2/api-docs, /webjars/**, /api/**
+server:
+  port: 11004
+
+swagger:
+  api:
+    tittle: JAVA API Template Service
+    description: Api to template information
+    termsOfServiceUrl: © 2023  indiedevelopers
+    version: 0.0.1
+  contact:
+    name: IndieDevelopers
+    url:  www.indidevelopers.com
+    email: shorcutbot.indiedevelopers@gmail.com
+  licence:
+    name: licence MIT
+    url: LicenceURL

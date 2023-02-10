@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="UserServiceTests" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="template_java_api.test" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.minmarket.template_java_api.services.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <option name="ALTERNATIVE_JRE_PATH" value="corretto-19" />
+    <option name="PACKAGE_NAME" value="com.minmarket.HealtCheckJavaApi.services" />
+    <option name="MAIN_CLASS_NAME" value="com.minmarket.template_java_api.services.UserServiceTests" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="class" />
+    <option name="VM_PARAMETERS" value="-ea -Xshare:off" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
